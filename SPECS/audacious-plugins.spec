@@ -11,7 +11,7 @@
 
 Name: audacious-plugins
 Version: 3.5.2
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: Plugins for the Audacious audio player
 Group: Applications/Multimedia
 URL: http://audacious-media-player.org/
@@ -198,7 +198,7 @@ install -p -m0644 %{SOURCE102} ${RPM_BUILD_ROOT}%{_datadir}/appdata
 %{_libdir}/audacious/General/alarm.so
 %{_libdir}/audacious/General/albumart.so
 %{_libdir}/audacious/General/aosd.so
-%{_libdir}/audacious/General/cd-menu-items.so
+#%{_libdir}/audacious/General/cd-menu-items.so
 %{_libdir}/audacious/General/delete-files.so
 %{_libdir}/audacious/General/gnomeshortcuts.so
 %{_libdir}/audacious/General/gtkui.so
@@ -213,7 +213,7 @@ install -p -m0644 %{SOURCE102} ${RPM_BUILD_ROOT}%{_datadir}/appdata
 %{_libdir}/audacious/General/song_change.so
 %{_libdir}/audacious/General/statusicon.so
 %dir %{_libdir}/audacious/Input/
-%{_libdir}/audacious/Input/cdaudio-ng.so
+#%{_libdir}/audacious/Input/cdaudio-ng.so
 %{_libdir}/audacious/Input/flacng.so
 %{_libdir}/audacious/Input/metronom.so
 %{_libdir}/audacious/Input/modplug.so
@@ -255,6 +255,9 @@ install -p -m0644 %{SOURCE102} ${RPM_BUILD_ROOT}%{_datadir}/appdata
 
 
 %changelog
+* Sat Nov 26 2016 Ricardo Arguello <rarguello@deskosproject.org> - 3.5.2-2
+- Rebuilt for DeskOS
+
 * Wed Oct 22 2014 Michael Schwendt <mschwendt@fedoraproject.org> - 3.5.2-1
 - Update to 3.5.2 (announced as final release in the 3.5 series).
 
