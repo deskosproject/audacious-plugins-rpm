@@ -1,0 +1,26 @@
+diff -Nurb --strip-trailing-cr audacious-plugins-3.4-beta2-orig/src/gnomeshortcuts/gnomeshortcuts.c audacious-plugins-3.4-beta2/src/gnomeshortcuts/gnomeshortcuts.c
+--- audacious-plugins-3.4-beta2-orig/src/gnomeshortcuts/gnomeshortcuts.c	2013-06-01 04:30:16.000000000 +0200
++++ audacious-plugins-3.4-beta2/src/gnomeshortcuts/gnomeshortcuts.c	2013-06-12 09:31:10.865476168 +0200
+@@ -45,6 +45,7 @@
+ AUD_GENERAL_PLUGIN
+ (
+     .name = N_("Gnome Shortcuts"),
++    .enabled_by_default = TRUE,
+     .domain = PACKAGE,
+     .about_text = about,
+     .init = init,
+@@ -230,6 +231,14 @@
+         g_warning ("Error connecting to DBus: %s", error->message);
+         g_error_free (error);
+     } else {
++        if ( !dbus_bus_name_has_owner(dbus_g_connection_get_connection(bus),
++                                      "org.gnome.SettingsDaemon", &error) ) {
++            if (error) {
++                g_warning(error->message);
++                g_error_free(error);
++            }
++            return;
++        }
+         media_player_keys_proxy = dbus_g_proxy_new_for_name (bus,
+          "org.gnome.SettingsDaemon",
+          "/org/gnome/SettingsDaemon/MediaKeys",
